@@ -1,0 +1,14 @@
+class NetworkConstants {
+  // base url
+  static const String baseURL = "http://192.168.1.88:3002/api"; //api link
+
+  // endpoints
+  static const String login = "auth/login";
+  static const String meResponse = "auth/me";
+  static const String register = "auth/register";
+  static const String getCourse = "";
+
+  // link policy and terme of use
+  static const String appTerme = "https://hognekaba.com/";
+  static const String appPolicy = "https://hognekaba.com/";
+}
