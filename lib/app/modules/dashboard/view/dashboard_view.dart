@@ -17,7 +17,7 @@ class DashboardView extends GetView<DashboardController> {
   Widget build(BuildContext context) {
     Get.put(DashboardController());
     return Scaffold(
-      body: tabs[controller.selectedIndex.value],
+      body: Obx(() =>tabs[controller.selectedIndex.value]),
       extendBody: true,
       bottomNavigationBar: buildBottomNavBar(),
       backgroundColor: AppColor.whiteColor,

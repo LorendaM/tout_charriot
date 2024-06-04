@@ -34,19 +34,19 @@ class LocationView extends GetView<LocationController> {
           backgroundColor: AppColor.transparentColor,
           elevation: 0,
         ),
-        body: Stack(
-          children: [
-            Obx(()=> GoogleMap(
-                onMapCreated: (GoogleMapController googleMapController) {
-                  controller.mapController.complete(googleMapController);
-                },
-                initialCameraPosition: CameraPosition(
-                  target: controller.center,
-                  zoom: 11.0,
+        body:  Obx(()=> Stack(
+            children: [
+              GoogleMap(
+                  onMapCreated: (GoogleMapController googleMapController) {
+                    controller.mapController.complete(googleMapController);
+                  },
+                  initialCameraPosition: CameraPosition(
+                    target: controller.center,
+                    zoom: 11.0,
+                  ),
                 ),
-              ),
-            ),
-          ],
+            ],
+          ),
         )
     );
   }
@@ -173,9 +173,7 @@ class LocationView extends GetView<LocationController> {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: AppSizes.twentyPadding),
                           child: CustomButton(
-                              press: () {
-
-                              },
+                              press: () {},
                               text: "${frLanguage['lunchRequest']}",
                               color: AppColor.thirdGrey,
                               style: AppTextStyle.text()

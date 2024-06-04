@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'app/intl/messages.dart';
-import 'app/modules/routes/app_pages.dart';
+import 'app/routes/app_pages.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const AppRoot());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class AppRoot extends StatelessWidget {
+  const AppRoot({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return  GetMaterialApp(
-        translations: Messages(), // your translations
+        translations: Messages(),
         locale: Get.deviceLocale,
         debugShowCheckedModeBanner: false,
         fallbackLocale: const Locale('en', 'US'),
