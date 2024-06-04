@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../../routes/app_pages.dart';
+import '../../../routes/app_pages.dart';
 
 class SplashscreenController extends GetxController {
 

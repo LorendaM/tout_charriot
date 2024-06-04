@@ -35,15 +35,25 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
+    	<array>
+    		<string>UIInterfaceOrientationPortrait</string>
+    		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+    		<string>UIInterfaceOrientationLandscapeLeft</string>
+    		<string>UIInterfaceOrientationLandscapeRight</string>
+    	</array>
+    	<key>CADisableMinimumFrameDurationOnPhone</key>
+    	<true/>
+    	<key>UIApplicationSupportsIndirectInputEvents</key>
+    	<true/>
+    	<key>NSLocationUsageDescription</key>
+    	<string>Les appareils plus anciens ont besoin d'être localisés.</string>
+    	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    	<string>besoin d'accéder à votre emplacement</string>
+    	<key>NSLocationAlwaysUsageDescription</key>
+    	<string>besoin d'accéder à votre emplacement</string>
+    	<key>NSLocationWhenInUseUsageDescription</key>
+    	<string>besoin d'accéder à votre emplacement</string>
+    	<key>io.flutter.embedded_views_preview </key>
+    	<true/>
 </dict>
 </plist>

@@ -12,9 +12,9 @@ class AppTextStyle {
     );
   } 
 
-  static TextStyle secondTitle({Color? color, FontWeight? fontWeight}) {
+  static TextStyle secondTitle({Color? color,double? size, FontWeight? fontWeight}) {
     return GoogleFonts.poppins(
-      fontSize: 16,
+      fontSize: size ?? 16,
       color: color?? AppColor.blackColor,
       fontWeight: fontWeight ?? FontWeight.w700
     );

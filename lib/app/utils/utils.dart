@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../data/services/service_impl/storage_service_impl.dart';
 
 class AppUtils {
   static Size kSize(context) => MediaQuery.of(context).size;
-  /*static Future<void> appStarter() async {
+  static Future<void> appStarter() async {
     await Hive.initFlutter();
     await Hive.openBox(StorageServicesImpl.userBoxName);
-  }*/
+  }
 }
 
 kPushNamed({required String path, required BuildContext context, Map<String, dynamic>? arguments}) =>

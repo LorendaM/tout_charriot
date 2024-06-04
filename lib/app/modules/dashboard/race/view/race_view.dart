@@ -30,55 +30,53 @@ class RaceView extends GetView<RaceController> {
     Get.put(RaceController());
     return DefaultTabController(
         length: myTabs.length,
-        child: Obx(()=> Scaffold(
-            key: controller.scaffoldKey,
+        child: Scaffold(
             body: NestedScrollView(
-              headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-                return [
-                  SliverAppBar(
-                    automaticallyImplyLeading: false,
-                    backgroundColor: AppColor.whiteColor,
-                    title: Text("${frLanguage['travel']}", style: AppTextStyle.textSmall(size: 16),),
-                    pinned: true,
-                    floating: true,
-                    bottom: TabBar(
-                        labelColor: AppColor.blackColor,
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        indicatorWeight: 6,
-                        dividerColor: AppColor.whiteColor,
-                        padding: const EdgeInsets.symmetric(horizontal: AppSizes.twentyPadding),
-                        overlayColor: WidgetStateProperty.all<Color>(Colors.transparent),
-                        labelStyle: AppTextStyle.textSmallBold(size: 11),
-                        indicator: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(AppSizes.secondSmalPadding)),
-                          color: AppColor.yellowPrimary,
-                        ),
-                        tabs: myTabs.map((item) {
-                          return Tab(
-                            text: item['label'],
+                headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+                  return [
+                    SliverAppBar(
+                      automaticallyImplyLeading: false,
+                      backgroundColor: AppColor.whiteColor,
+                      title: Text("${frLanguage['travel']}", style: AppTextStyle.textSmall(size: 16),),
+                      pinned: true,
+                      floating: true,
+                      bottom: TabBar(
+                          labelColor: AppColor.blackColor,
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          indicatorWeight: 6,
+                          dividerColor: AppColor.whiteColor,
+                          padding: const EdgeInsets.symmetric(horizontal: AppSizes.twentyPadding),
+                          overlayColor: WidgetStateProperty.all<Color>(Colors.transparent),
+                          labelStyle: AppTextStyle.textSmallBold(size: 11),
+                          indicator: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(AppSizes.secondSmalPadding)),
+                            color: AppColor.yellowPrimary,
+                          ),
+                          tabs: myTabs.map((item) {
+                            return Tab(
+                              text: item['label'],
+                            );
+                          }).toList()
+                      ),
+                    ),
+                  ];
+                },
+                body: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
+                    alignment: Alignment.center,
+                    child: TabBarView(
+                        physics: const BouncingScrollPhysics(),
+                        children: myTabs.map<Widget>((item) {
+                          return Container(
+                              color: AppColor.whiteColor,
+                              padding: const EdgeInsets.all(1),
+                              child: item['page']
                           );
                         }).toList()
-                    ),
-                  ),
-                ];
-              },
-              body: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
-                  alignment: Alignment.center,
-                  child: TabBarView(
-                      physics: const BouncingScrollPhysics(),
-                      children: myTabs.map<Widget>((item) {
-                        return Container(
-                            color: AppColor.whiteColor,
-                            padding: const EdgeInsets.all(1),
-                            child: item['page']
-                        );
-                      }).toList()
-                  )
+                    )
+                ),
               ),
             ),
-          ),
-        )
     );
   }
 }

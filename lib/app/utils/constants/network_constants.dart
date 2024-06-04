@@ -11,4 +11,8 @@ class NetworkConstants {
   // link policy and terme of use
   static const String appTerme = "https://hognekaba.com/";
   static const String appPolicy = "https://hognekaba.com/";
+
+  // link maps api
+  static const String mapApiUrl = "";
+  static const String mapApiKey = "AIzaSyDzaj7_85eeuJ2JprWDVSz2qTQ1G5io_eU";
 }
