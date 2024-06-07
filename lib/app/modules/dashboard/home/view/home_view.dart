@@ -26,14 +26,7 @@ class HomeView extends GetView<HomeController> {
           child: const Image(
             image: AssetImage(AppImages.defaultAvatard),
           ),
-        )
-        /*const Padding( //celui qui doit être utiliser après
-          padding: EdgeInsets.only(left: AppSizes.doublespacePadding),
-          child: CircleAvatar(
-            radius: 42,
-            backgroundImage: AssetImage(AppImages.defaultAvatard),
-          ),
-        )*/,
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppSizes.doublespacePadding, vertical: AppSizes.secondSmalPadding),
@@ -51,7 +44,7 @@ class HomeView extends GetView<HomeController> {
             const SizedBox(height: AppSizes.spacePadding),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: AppSizes.spacePadding),
-              child: Text("${frLanguage['welcome']}\nAchille",
+              child: Text("${frLanguage['welcome']}\n${controller.username}",
                 style: AppTextStyle.title(),
               ),
             ),
@@ -105,7 +98,10 @@ class HomeView extends GetView<HomeController> {
               child: CustomInput(
                 hint: "${frLanguage['searchCart']}",
                 enable: false,
-                image: AppImages.search,
+                prefixIcon: const Icon(
+                  Icons.search,
+                  size: 50,
+                ),
               ),
             ),
             const SizedBox(height: AppSizes.spacePadding,),

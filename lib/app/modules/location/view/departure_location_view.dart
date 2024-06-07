@@ -85,7 +85,10 @@ class DepartureLocationView extends GetView<DepartureLocationController> {
                     controller: controller.searchController,
                     enable: false,
                     hint: '${frLanguage['chooseAddressOf']}',
-                    image: AppImages.search,
+                    prefixIcon: const Icon(
+                      Icons.search,
+                      size: 50,
+                    ),
                   ),
                 ),
               )

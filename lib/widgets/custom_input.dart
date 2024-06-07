@@ -8,7 +8,8 @@ class CustomInput extends StatelessWidget {
   const CustomInput({
     super.key,
     this.enable = true,
-    this.image,
+    this.prefixIcon,
+    this.suffixIcon,
     this.hint,
     this.isPassWord = false,
     this.secure = false,
@@ -19,10 +20,11 @@ class CustomInput extends StatelessWidget {
   });
   final String? hint;
   final bool? enable;
-  final String? image;
   final TextInputType? keyboardType;
   final bool? isPassWord;
   final bool? secure;
+  final Widget? prefixIcon;
+  final IconButton? suffixIcon;
   final Function()? toggle;
   final bool? lowerMargin;
   final TextEditingController? controller;
@@ -48,19 +50,21 @@ class CustomInput extends StatelessWidget {
           textAlignVertical: TextAlignVertical.top,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.fromLTRB(10, 13, 10, 12),
-            icon: image != null ? Image(image: AssetImage(image!)) : const SizedBox(),
+            icon: prefixIcon ?? const SizedBox(),
             hintText: hint,
+            border: InputBorder.none,
             hintStyle: AppTextStyle.text(color: AppColor.blackColor),
             suffixIcon: isPassWord ?? false
-                ? GestureDetector(
-                    onTap: toggle,
-                    child: Icon(
-                      secure!
-                          ? Icons.visibility_outlined
-                          : Icons.visibility_off_outlined,
-                      color: Colors.black,
-                    ),
-                  )
+                ? IconButton(
+              icon: Icon(
+                  secure!
+                      ? Icons.visibility_outlined
+                      : Icons.visibility_off_outlined,
+                color: Colors.black,),
+              onPressed: () {
+                toggle;
+              },
+            )
                 : const SizedBox(),
           ),
         ),

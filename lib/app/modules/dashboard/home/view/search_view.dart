@@ -29,7 +29,10 @@ class SearchView extends GetView<SearchController> {
               padding: const EdgeInsets.symmetric(vertical: AppSizes.nextDefaultPadding, horizontal: AppSizes.smallPadding),
               child: CustomInput(
                 hint: "${frLanguage['searchCart']}",
-                image: AppImages.search,
+                prefixIcon: const Icon(
+                  Icons.search,
+                  size: 50,
+                ),
               ),
             ),
             Expanded(

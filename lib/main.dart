@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tout_charriot/app/utils/utils.dart';
 
 import 'app/intl/messages.dart';
 import 'app/routes/app_pages.dart';
 
-void main() {
+void main() async{
+  await AppUtils.appStarter();
   runApp(const AppRoot());
 }
 

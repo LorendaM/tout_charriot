@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:tout_charriot/app/utils/text_theme.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../data/services/service_impl/storage_service_impl.dart';
+import 'color.dart';
 
 class AppUtils {
   static Size kSize(context) => MediaQuery.of(context).size;
@@ -61,4 +64,30 @@ navPrevious(context, mounted) {
   if (mounted && Navigator.canPop(context)) {
     Navigator.pop(context);
   }
+}
+void showToast(BuildContext context, msg, {int seconds = 5}) {
+  TextStyle textStyle = const TextStyle(fontSize: 13.0, color: Colors.white);
+  showToastWidget(Builder(builder: (BuildContext context) {
+    FocusScope.of(context).requestFocus(FocusNode());
+    return Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25.0),
+            color: const Color(0x99000000)),
+        padding: const EdgeInsets.symmetric(horizontal: 17.0, vertical: 10.0),
+        child: msg is String
+            ? Text(
+                msg,
+          style: textStyle,
+        )
+            : msg);
+  }),
+      context: context,
+      animation: StyledToastAnimation.slideFromBottom,
+      reverseAnimation: StyledToastAnimation.fade,
+      curve: Curves.fastOutSlowIn,
+      reverseCurve: Curves.easeInOut,
+      dismissOtherToast: true,
+      duration: Duration(seconds: seconds),
+      endOffset: const Offset(0, -2.5),
+      animDuration: const Duration(milliseconds: 1500));
 }

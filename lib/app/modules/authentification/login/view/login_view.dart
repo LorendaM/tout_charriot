@@ -3,10 +3,8 @@ import 'package:get/get.dart';
 import 'package:tout_charriot/app/intl/texts.dart';
 import 'package:tout_charriot/app/modules/authentification/login/controller/login_controller.dart';
 import 'package:tout_charriot/app/utils/color.dart';
-import 'package:tout_charriot/app/utils/constants/image_constants.dart';
 import 'package:tout_charriot/app/utils/constants/size_constants.dart';
 import 'package:tout_charriot/app/utils/text_theme.dart';
-import 'package:tout_charriot/app/utils/utils.dart';
 import 'package:tout_charriot/widgets/custom_button.dart';
 import 'package:tout_charriot/widgets/custom_input.dart';
 
@@ -24,23 +22,27 @@ class LoginView extends GetView<LoginController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 34),
-                child: Icon(Icons.close_outlined, size: AppSizes.secondDefPadding,),
-              ),
               const SizedBox(height: AppSizes.largePadding,),
               Text("${frLanguage['connectToApp']}",
                 style: AppTextStyle.title(),
               ),
               const SizedBox(height: AppSizes.secondDefPadding,),
               CustomInput(
-                image: AppImages.phone,
+                prefixIcon: const Icon(
+                  Icons.phone,
+                  size: 50,
+                ),
                 hint: "${frLanguage['numTel']}",
+                controller: controller.phoneController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding,),
               CustomInput(
-                image: AppImages.lock,
+                prefixIcon: const Icon(
+                  Icons.lock,
+                  size: 50,
+                ),
                 hint: "${frLanguage['password']}",
+                controller: controller.pwdController.value,
               ),
               CustomMultiTextButton(
                 text: Text.rich(
@@ -52,31 +54,27 @@ class LoginView extends GetView<LoginController> {
                         ]
                     )
                 ),
-                press: () {
-                  //nav to pwd recover
-                },
+                press: () {},
               ),
               const SizedBox(height: AppSizes.semiLargePadding,),
               CustomButton(
                 press: () {
-                  showLoading(context);
-                  //traitement
-                  //navPrevious(context, mounted);
-                  //kPushNamed(path: '/accueil', context: context);
-                  Get.toNamed('/dashboard');
+                  controller.userLogin(context);
                 },
                 text: "${frLanguage['login']}",
                 style: AppTextStyle.textBold(),
               ),
-              CustomTextButton(
-                text: "${frLanguage['alreadyRegistered']}",
-                press: () {},
-                style: AppTextStyle.textBold(color: AppColor.blackColor),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: AppSizes.spacePadding,),
+                  child: Text("${frLanguage['alreadyRegistered']}",
+                    style: AppTextStyle.text(color: AppColor.blackColor),
+                  ),
+                ),
               ),
               CustomTextButton(
                 text: "${frLanguage['registerYou']}",
                 press: () {
-                  //kPushNamed(context: context, path: '/register');
                   Get.toNamed( '/register');
                 },
                 style: AppTextStyle.text(color: AppColor.yellowPrimary),

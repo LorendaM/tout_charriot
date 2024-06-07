@@ -55,5 +55,10 @@
     	<string>besoin d'accéder à votre emplacement</string>
     	<key>io.flutter.embedded_views_preview </key>
     	<true/>
+    	<key>NSAppTransportSecurity</key>
+        <dict>
+          <key>NSAllowsArbitraryLoads</key>
+          <true/>
+        </dict>
 </dict>
 </plist>

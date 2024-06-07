@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:tout_charriot/app/intl/texts.dart';
 import 'package:tout_charriot/app/modules/authentification/register/controller/register_controller.dart';
 import 'package:tout_charriot/app/utils/color.dart';
-import 'package:tout_charriot/app/utils/constants/image_constants.dart';
 import 'package:tout_charriot/app/utils/constants/size_constants.dart';
 import 'package:tout_charriot/app/utils/text_theme.dart';
 import 'package:tout_charriot/app/utils/utils.dart';
@@ -27,9 +26,18 @@ class RegisterView extends GetView<RegisterController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 34),
-                child: Icon(Icons.close_outlined, size: AppSizes.secondDefPadding),
+              Padding(
+                padding: const EdgeInsets.only(top: 34),
+                child: IconButton(
+                  icon: const Icon(
+                      Icons.close_outlined,
+                      size: AppSizes.secondDefPadding
+                  ),
+                  onPressed: () {
+                    Get.toNamed('/login');
+                  },
+
+                  ),
               ),
               const SizedBox(height: AppSizes.largePadding),
               Text("${frLanguage['registeredToApp']}",
@@ -37,29 +45,66 @@ class RegisterView extends GetView<RegisterController> {
               ),
               const SizedBox(height: AppSizes.secondDefPadding),
               CustomInput(
-                image: AppImages.phone,
+                prefixIcon: const Icon(
+                    Icons.person,
+                  size: 50,
+                ),
                 hint: "${frLanguage['name']}",
+                controller: controller.lastNameController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding),
               CustomInput(
-                image: AppImages.phone,
+                prefixIcon: const Icon(
+                  Icons.person,
+                  size: 50,
+                ),
                 hint: "${frLanguage['prenom']}",
+                controller: controller.firstNameController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding),
               CustomInput(
-                image: AppImages.phone,
+                prefixIcon: const Icon(
+                  Icons.phone,
+                  size: 50,
+                ),
                 hint: "${frLanguage['numTel']}",
+                controller: controller.phoneController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding),
               CustomInput(
-                image: AppImages.lock,
+                prefixIcon: const Icon(
+                  Icons.email_rounded,
+                  size: 50,
+                ),
+                hint: "Email",
+                controller: controller.emailController.value,
+              ),
+              const SizedBox(height: AppSizes.spacePadding),
+              CustomInput(
+                prefixIcon: const Icon(
+                  Icons.lock,
+                  size: 50,
+                ),
+                isPassWord: true,
+                secure: controller.isPasswordVisible.value,
+                toggle: (){},
                 hint: "${frLanguage['password']}",
+                controller: controller.pwdController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding,),
               CustomInput(
-                image: AppImages.phone,
-                hint: "${frLanguage['confirmPwd']}",
-              ),
+                  prefixIcon: const Icon(
+                    Icons.lock,
+                    size: 50,
+                  ),
+                isPassWord: true,
+                secure: controller.isPasswordVisible.value,
+                toggle: () {
+                  controller.togglePasswordVisibility();
+                },
+                  hint: "${frLanguage['confirmPwd']}",
+                  controller: controller.confirmPwdController.value,
+                ),
               const SizedBox(height: AppSizes.thirdPadding),
               CustomMultiTextButton(
                 child: RichText(
@@ -88,14 +133,16 @@ class RegisterView extends GetView<RegisterController> {
               ),
               const SizedBox(height: AppSizes.semiLargePadding),
               CustomButton(
-                press: () {},
+                press: () {
+                  controller.userRegister(context);
+                },
                 text: "${frLanguage['register']}",
                 style: AppTextStyle.textBold(),
               ),
               CustomTextButton(
                 text: "${frLanguage['notHaveAccount']}",
                 press: () {},
-                style: AppTextStyle.textBold(color: AppColor.blackColor),
+                style: AppTextStyle.text(color: AppColor.blackColor),
               ),
               CustomTextButton(
                 text: "${frLanguage['loginYou']}",
@@ -104,7 +151,7 @@ class RegisterView extends GetView<RegisterController> {
                   Get.toNamed('/login');
                 },
                 style: AppTextStyle.text(color: AppColor.yellowPrimary),
-              )
+              ),
             ],
           ),
         ),
