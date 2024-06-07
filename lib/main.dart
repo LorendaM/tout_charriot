@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tout_charriot/app/utils/theme.dart';
 
 import 'app/intl/messages.dart';
 import 'app/routes/app_pages.dart';
@@ -14,6 +15,7 @@ class AppRoot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  GetMaterialApp(
+        theme: AppTheme.appTheme,
         translations: Messages(),
         locale: Get.deviceLocale,
         debugShowCheckedModeBanner: false,

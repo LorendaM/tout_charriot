@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -57,8 +58,9 @@ showLoading(context, [String msg = 'Veuillez patienter ...']) {
   );
 }
 
-navPrevious(context, mounted) {
-  if (mounted && Navigator.canPop(context)) {
+navPrevious(/*context, mounted*/) {
+  Get.back();
+  /*if (mounted && Navigator.canPop(context)) {
     Navigator.pop(context);
-  }
+  }*/
 }

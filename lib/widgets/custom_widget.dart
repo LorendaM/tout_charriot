@@ -1,12 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:tout_charriot/app/intl/texts.dart';
 
 import '../app/utils/color.dart';
+import '../app/utils/constants/image_constants.dart';
 import '../app/utils/constants/size_constants.dart';
 import '../app/utils/request_utils.dart';
 import '../app/utils/text_theme.dart';
-import '../app/intl/texts.dart';
+import '../app/utils/utils.dart';
 
 class CustomCategory extends StatelessWidget {
   final String text;
@@ -282,6 +283,96 @@ mySeperator(double height, Color color) {
         }),
       );
     }
+  );
+}
+
+// app bar transparent avec un boutton de retour en cercle
+circleBackAppBar() {
+  return AppBar(
+    leading: InkWell(
+      onTap: () {
+        navPrevious();
+      },
+      child: Container(
+        margin: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(36),
+          color: AppColor.yellowPrimary,
+        ),
+      ),
+    ),
+    backgroundColor: AppColor.transparentColor,
+    elevation: 0,
+  );
+}
+
+// container de definition de trajet
+travelContainer({Widget? children}) {
+  return Container(
+    decoration: const BoxDecoration(
+      color: AppColor.fourGris,
+      borderRadius: BorderRadius.all(Radius.circular(AppSizes.fourPadding)),
+    ),
+    padding: const EdgeInsets.fromLTRB(AppSizes.thirdDoublePadding, AppSizes.thirdPadding, AppSizes.nextsmallPadding, AppSizes.thirdPadding),
+    child: children
+  );
+}
+
+// row de selection de lieu de trajet
+choosePalce({required String adresse, void Function()? onTap, bool isDepart = false, String? lieu}) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Text(lieu ?? "${frLanguage[adresse]}", style: AppTextStyle.textSmall(size: 12, color: AppColor.secondGris),),
+      SizedBox(width: isDepart ? 46 : 21,),
+      GestureDetector(
+        onTap: onTap,
+        child: buildImgCtn(AppColor.thirdGrey, AppSizes.fortyPadding, AppSizes.secondSmalPadding, AppImages.pencil),
+      )
+    ],
+  );
+}
+
+// row de type de vehicule et de prix
+estimatePrice({required Map<String, dynamic> arguments}) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Image(image: AssetImage(arguments['imageEngins']), width: AppSizes.largePadding, height: AppSizes.largePadding,),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("${frLanguage['carType']}", style: AppTextStyle.textSmall(size: 12),),
+              Text(arguments['typeEngins'], style: AppTextStyle.textBold(size: 12),)
+            ],
+          ),
+        ],
+      ),
+      Text("${arguments['mtnStart']} - ${arguments['mtnEnd']} ${frLanguage['devise']}", style: AppTextStyle.textBold(color: AppColor.greenColor, size: 13),)
+    ],
+  );
+}
+
+// ligne de lieu de départ et d'arrivé avec le cercle et la ligne en pointillé
+departArriveLine() {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      buildCircle(AppColor.yellowPrimary, AppSizes.fourPadding),
+      const VerticalDottedLine(
+        height: 46,
+        color: AppColor.blackColor,
+        width: 3.0,
+        dotSpacing: 15.0,
+        dotSize: 63.0,
+      ),
+      buildCircle(AppColor.blackColor, AppSizes.fourPadding),
+    ],
   );
 }
 
