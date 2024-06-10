@@ -13,6 +13,7 @@ abstract class Routes {
   static const race_progress =_Paths.race + _Paths.race_progress;
   static const race_accomplish =_Paths.race + _Paths.race_accomplish;
   static const search = _Paths.search;
+  static const notification = _Paths.notification;
   static const location = _Paths.location;
   static const departure_location = _Paths.location+_Paths.departure_location;
   static const arrive_location = _Paths.location+_Paths.arrive_location;
@@ -28,6 +29,7 @@ abstract class _Paths {
   static const register = '/register';
   static const race = '/race';
   static const search = '/search';
+  static const notification = '/notification';
   static const location = '/location';
   static const race_waitting ='/race_waitting';
   static const race_progress ='/race_progress';

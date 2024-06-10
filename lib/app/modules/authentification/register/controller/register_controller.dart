@@ -1,14 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:tout_charriot/app/data/services/service_impl/authentification_service_impl.dart';
 import 'package:tout_charriot/app/utils/utils.dart';
-
-import '../../../../data/models/user_model.dart';
 import '../../../../data/services/authentification_service.dart';
 import '../../../../routes/app_pages.dart';
-import '../../../../utils/request_utils.dart';
 
 class RegisterController extends GetxController {
   var phoneController = TextEditingController().obs;
@@ -17,13 +13,12 @@ class RegisterController extends GetxController {
   var lastNameController = TextEditingController().obs;
   var firstNameController = TextEditingController().obs;
   var emailController = TextEditingController().obs;
-  late AuthentificationService _authentificationService;
+  late AuthentificationService _authenticationService;
   var isPasswordVisible = false.obs;
-
 
   @override
   void onInit() {
-    _authentificationService=AuthentificationServiceImpl();
+    _authenticationService=AuthentificationServiceImpl();
     // TODO: implement onInit
     super.onInit();
   }
@@ -31,7 +26,7 @@ class RegisterController extends GetxController {
     isPasswordVisible.value = !isPasswordVisible.value;
   }
 
-  void userRegister(BuildContext context)async{
+  /*void userRegister(BuildContext context)async{
 
     Map<String,dynamic>register={
       'username':'${lastNameController.value.text}'+' '+'${firstNameController.value.text}',
@@ -47,7 +42,6 @@ class RegisterController extends GetxController {
       // ignore: use_build_context_synchronously
       showToast(context, message['message']);
     } else {
-      Get.back();
       Map<String, dynamic> message = jsonDecode(registerResponse.message!);
       // ignore: use_build_context_synchronously
       showToast(context, message['message']);
@@ -56,7 +50,27 @@ class RegisterController extends GetxController {
       );
     }
     }catch(e){
-      Get.back();
+      // ignore: use_build_context_synchronously
+      showToast(context, e.toString());
+    }
+  }*/
+
+  Future<void> userRegister(BuildContext context) async {
+    final Map<String, dynamic> register = {
+      'username': '${lastNameController.value.text} ${firstNameController.value.text}',
+      'phone': phoneController.value.text,
+      'password': confirmPwdController.value.text,
+      'email': emailController.value.text,
+      'provider': 'ewp',
+    };
+
+    try {
+      String message = await _authenticationService.registerUser(jsonEncode(register));
+      // ignore: use_build_context_synchronously
+      showToast(context, message);
+
+      Get.offNamed(Routes.login);
+    } catch (e) {
       // ignore: use_build_context_synchronously
       showToast(context, e.toString());
     }

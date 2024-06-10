@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tout_charriot/app/data/models/user_model.dart';
 import 'package:tout_charriot/app/data/services/storage_service.dart';
@@ -7,21 +9,31 @@ class StorageServicesImpl implements StorageServices {
   static String userKey = "HSI_USER";
   static final userBox = Hive.box(userBoxName);
   static String userCredentialKey = "jwt";
+  final String boolKey = 'isActivated';
+  @override
+  Future<void> setBoolData(bool value) async {
+    await userBox.put(boolKey, value);
+  }
+  @override
+  bool? getBoolData() {
+    return userBox.get(boolKey);
+  }
 
   @override
   UserModel getUserData() {
-    Map userData = userBox.get(userKey);
-    UserModel savedUser = UserModel.fromJson(userData);
-    return savedUser;
+    String? userDataJson = userBox.get(userKey);
+    if (userDataJson != null) {
+      Map<String, dynamic> userDataMap = jsonDecode(userDataJson);
+      UserModel savedUser = UserModel.fromJson(userDataMap);
+      return savedUser;
+    } else {
+      throw Exception('No user data found');
+    }
   }
-
   @override
   void setUserData(json) async {
     userBox.put(userKey, json);
   }
-
-  @override
-  bool userExists() => userBox.containsKey(userKey);
 
   @override
   void disconnectUser() async {

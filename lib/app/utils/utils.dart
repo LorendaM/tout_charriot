@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:tout_charriot/app/utils/text_theme.dart';
@@ -60,10 +61,8 @@ showLoading(context, [String msg = 'Veuillez patienter ...']) {
   );
 }
 
-navPrevious(context, mounted) {
-  if (mounted && Navigator.canPop(context)) {
-    Navigator.pop(context);
-  }
+navPrevious() {
+  Get.back();
 }
 void showToast(BuildContext context, msg, {int seconds = 5}) {
   TextStyle textStyle = const TextStyle(fontSize: 13.0, color: Colors.white);

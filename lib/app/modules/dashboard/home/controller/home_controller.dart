@@ -1,43 +1,28 @@
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:tout_charriot/app/data/services/service_impl/user_info_service_impl.dart';
-import 'package:tout_charriot/app/data/services/user_info_service.dart';
-
 import '../../../../data/models/user_model.dart';
-import '../../../../utils/request_utils.dart';
+import '../../../../data/services/service_impl/storage_service_impl.dart';
+import '../../../../data/services/storage_service.dart';
 
 class HomeController extends GetxController {
-  late UserInfoService _userInfoService;
+  late StorageServices _storageService;
   late final Rx<UserModel?> user = Rx<UserModel?>(null);
   String username = '';
   String photo = '';
 
   @override
   void onInit() {
-    _userInfoService=UserInfoServiceImpl();
-    fetchUserData();
-    // TODO: implement onInit
+    _storageService=StorageServicesImpl();
+    getUserData();
     super.onInit();
   }
 
-  Future<void> fetchUserData() async {
-    try{
-    AckResponse<UserModel?> userDataResponse =
-    await _userInfoService.userInfo();
-
-    if (userDataResponse.success == false) {
-      Map<String, dynamic> message = jsonDecode(userDataResponse.message!);
-
-      String? msg = message['message'];
-    } else {
-      user.value = userDataResponse.data!;
-      username = user.value!.username!;
-      photo = user.value!.photo!;
-    }
-  } catch (e) {
-      Text(e.toString());
+  UserModel getUserData() {
+    try {
+      UserModel userModel =_storageService.getUserData();
+      username = userModel.username!;
+      return userModel;
+    } catch (e) {
+      throw Exception('Failed to load user data: ${e.toString()}');
     }
   }
 

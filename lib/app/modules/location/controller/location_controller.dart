@@ -7,5 +7,6 @@ class LocationController extends GetxController {
   final Completer<GoogleMapController> mapController = Completer<GoogleMapController>();
 
   final LatLng center = const LatLng(6.1823217, 1.2466907); // sur lome
+  final Map<String, dynamic> args = Get.arguments as Map<String, dynamic>;
 
 }

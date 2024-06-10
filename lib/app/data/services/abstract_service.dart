@@ -11,8 +11,25 @@ abstract class AbstractService {
         statusCode: '${response.statusCode}',
         message: response.body);
   }
+
+  AckResponse<Tmodel?> buildAckErrorResponseTest<Tmodel>(Response response) {
+    return AckResponse(
+        data: null,
+        success: false,
+        statusCode: '${response.statusCode}',
+        message: response.body);
+  }
+
   AckResponse<Tmodel> buildAckSuccessResponse<Tmodel>(dynamic data) {
     return AckResponse<Tmodel>(
+        data: data == null ? null : data as Tmodel?,
+        success: true,
+        statusCode: "200",
+        message: "success");
+  }
+
+  AckResponseTest<Tmodel> buildAckSuccessResponseR<Tmodel>(dynamic data) {
+    return AckResponseTest<Tmodel>(
         data: data == null ? null : data as Tmodel?,
         success: true,
         statusCode: "200",

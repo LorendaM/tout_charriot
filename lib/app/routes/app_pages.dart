@@ -1,6 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:tout_charriot/app/modules/authentification/login/view/login_view.dart';
 import 'package:tout_charriot/app/modules/dashboard/home/view/home_view.dart';
+import 'package:tout_charriot/app/modules/dashboard/home/view/notification_view.dart';
 import 'package:tout_charriot/app/modules/dashboard/home/view/search_view.dart';
 import 'package:tout_charriot/app/modules/dashboard/race/view/race_accomplish_view.dart';
 import 'package:tout_charriot/app/modules/dashboard/race/view/race_view.dart';
@@ -62,6 +63,11 @@ class AppPages {
     GetPage(
       name: _Paths.search,
       page: () => const SearchView(),
+    ),
+
+    GetPage(
+      name: _Paths.notification,
+      page: () => const NotificationView(),
     ),
     GetPage(
       name: _Paths.location,

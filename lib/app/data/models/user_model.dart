@@ -7,9 +7,6 @@ class UserModel {
   final String? device_token;
   final String? photo;
   final String? provider;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
-  final DateTime? deletedAt;
 
   UserModel({
     this.id,
@@ -20,9 +17,6 @@ class UserModel {
     this.device_token,
     this.password,
     this.provider,
-    this.createdAt,
-    this.updatedAt,
-    this.deletedAt,
   });
 
   Map<String, dynamic> toJson() {
@@ -35,9 +29,6 @@ class UserModel {
       'password': password,
       'photo': photo,
       'device_token': device_token,
-      'createdAt': createdAt?.toIso8601String(),
-      'updatedAt': updatedAt?.toIso8601String(),
-      'deletedAt': deletedAt?.toIso8601String(),
     };
   }
 
@@ -49,9 +40,6 @@ class UserModel {
       phone: json['phone'],
       provider: json['provider'],
       password: json['password'],
-      createdAt: DateTime.parse(json['createdAt']),
-      updatedAt: DateTime.parse(json['updatedAt']),
-      deletedAt: DateTime.parse(json['deletedAt']),
     );
   }
 }

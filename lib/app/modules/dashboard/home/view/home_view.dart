@@ -31,7 +31,27 @@ class HomeView extends GetView<HomeController> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppSizes.doublespacePadding, vertical: AppSizes.secondSmalPadding),
             child: GestureDetector(
-              child: const Image(image: AssetImage(AppImages.notify)),
+              onTap: (){
+                Get.toNamed('/notification');
+                //Get.toNamed('/search');
+              },
+              child: Container(
+                height: 55,
+                width: 55,
+                decoration: BoxDecoration(
+                  border:Border.all(
+                  width: 1,
+                  color: Colors.black,
+                ),
+                  shape: BoxShape.circle
+                ),
+                child: const Center(
+                    child: Icon(
+                        Icons.notifications,
+                      color: Colors.black,
+                    )),
+              )
+              //const Image(image: AssetImage(AppImages.notify)),
             ),
           )
         ],
@@ -123,7 +143,10 @@ class HomeView extends GetView<HomeController> {
                               'mtnEnd': 32000
                             } );
                       },
-                      child: const CustomCategory(text: 'grue', image: AppImages.grue,)
+                      child: const CustomCategory(
+                        text: 'grue',
+                        image: AppImages.grue,
+                      )
                   ),
                   const SizedBox(width: AppSizes.thirdPadding,),
                   GestureDetector(
@@ -137,7 +160,10 @@ class HomeView extends GetView<HomeController> {
                               'mtnEnd': 32000
                             } );
                       },
-                      child: const CustomCategory(text: 'tricycle', image: AppImages.tricycle,)
+                      child: const CustomCategory(
+                        text: 'tricycle',
+                        image: AppImages.tricycle,
+                      )
                   ),
                   const SizedBox(width: AppSizes.thirdPadding,),
                   GestureDetector(

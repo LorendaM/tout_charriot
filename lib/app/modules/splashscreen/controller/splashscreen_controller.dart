@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:tout_charriot/app/data/services/service_impl/storage_service_impl.dart';
 import '../../../routes/app_pages.dart';
 
 class SplashscreenController extends GetxController {
@@ -10,11 +11,12 @@ class SplashscreenController extends GetxController {
   }
   controlToApp() {
     Future.delayed(const Duration(seconds: 4), () {
-      /*if (storageViewModel.isUserExists) {
-        // nav home
+      bool? isLogin = StorageServicesImpl().getBoolData();
+      if (isLogin == true) {
+        Get.offNamed(Routes.dashboard);
+      }else {
+        Get.offNamed(Routes.login);
       }
-      kPushRemplaceNamed(context: context, path: '/login');*/
-      Get.offNamed(Routes.login);
     });
 
   }

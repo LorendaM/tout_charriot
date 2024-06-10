@@ -1,9 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tout_charriot/app/intl/texts.dart';
 import 'package:tout_charriot/app/modules/authentification/register/controller/register_controller.dart';
 import 'package:tout_charriot/app/utils/color.dart';
+import 'package:tout_charriot/app/utils/constants/image_constants.dart';
 import 'package:tout_charriot/app/utils/constants/size_constants.dart';
 import 'package:tout_charriot/app/utils/text_theme.dart';
 import 'package:tout_charriot/app/utils/utils.dart';
@@ -45,28 +47,40 @@ class RegisterView extends GetView<RegisterController> {
               ),
               const SizedBox(height: AppSizes.secondDefPadding),
               CustomInput(
-                prefixIcon: const Icon(
-                    Icons.person,
-                  size: 50,
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: SvgPicture.asset(
+                    AppImages.user,
+                    width: 40,
+                  ),
                 ),
+                keyboardType: TextInputType.text,
                 hint: "${frLanguage['name']}",
                 controller: controller.lastNameController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding),
               CustomInput(
-                prefixIcon: const Icon(
-                  Icons.person,
-                  size: 50,
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: SvgPicture.asset(
+                    AppImages.user,
+                    width: 40,
+                  ),
                 ),
+                keyboardType: TextInputType.text,
                 hint: "${frLanguage['prenom']}",
                 controller: controller.firstNameController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding),
               CustomInput(
-                prefixIcon: const Icon(
-                  Icons.phone,
-                  size: 50,
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: SvgPicture.asset(
+                    AppImages.phone,
+                    width: 40,
+                  ),
                 ),
+                keyboardType: TextInputType.number,
                 hint: "${frLanguage['numTel']}",
                 controller: controller.phoneController.value,
               ),
@@ -76,15 +90,20 @@ class RegisterView extends GetView<RegisterController> {
                   Icons.email_rounded,
                   size: 50,
                 ),
+                keyboardType: TextInputType.emailAddress,
                 hint: "Email",
                 controller: controller.emailController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding),
               CustomInput(
-                prefixIcon: const Icon(
-                  Icons.lock,
-                  size: 50,
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: SvgPicture.asset(
+                    AppImages.lock,
+                    width: 40,
+                  ),
                 ),
+                keyboardType: TextInputType.visiblePassword,
                 isPassWord: true,
                 secure: controller.isPasswordVisible.value,
                 toggle: (){},
@@ -93,10 +112,14 @@ class RegisterView extends GetView<RegisterController> {
               ),
               const SizedBox(height: AppSizes.spacePadding,),
               CustomInput(
-                  prefixIcon: const Icon(
-                    Icons.lock,
-                    size: 50,
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: SvgPicture.asset(
+                      AppImages.lock,
+                      width: 40,
+                    ),
                   ),
+                keyboardType: TextInputType.visiblePassword,
                 isPassWord: true,
                 secure: controller.isPasswordVisible.value,
                 toggle: () {

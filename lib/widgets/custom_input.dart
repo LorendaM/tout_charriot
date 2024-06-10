@@ -42,6 +42,7 @@ class CustomInput extends StatelessWidget {
       ),
       child: Center(
         child: TextField(
+          textCapitalization: TextCapitalization.words,
           enabled: enable,
           controller: controller,
           obscureText: secure ?? false,

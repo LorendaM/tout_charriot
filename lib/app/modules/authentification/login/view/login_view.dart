@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tout_charriot/app/intl/texts.dart';
 import 'package:tout_charriot/app/modules/authentification/login/controller/login_controller.dart';
@@ -7,6 +8,8 @@ import 'package:tout_charriot/app/utils/constants/size_constants.dart';
 import 'package:tout_charriot/app/utils/text_theme.dart';
 import 'package:tout_charriot/widgets/custom_button.dart';
 import 'package:tout_charriot/widgets/custom_input.dart';
+
+import '../../../../utils/constants/image_constants.dart';
 
 
 class LoginView extends GetView<LoginController> {
@@ -28,19 +31,27 @@ class LoginView extends GetView<LoginController> {
               ),
               const SizedBox(height: AppSizes.secondDefPadding,),
               CustomInput(
-                prefixIcon: const Icon(
-                  Icons.phone,
-                  size: 50,
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: SvgPicture.asset(
+                    AppImages.phone,
+                    width: 40,
+                  ),
                 ),
+                keyboardType: TextInputType.number,
                 hint: "${frLanguage['numTel']}",
                 controller: controller.phoneController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding,),
               CustomInput(
-                prefixIcon: const Icon(
-                  Icons.lock,
-                  size: 50,
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: SvgPicture.asset(
+                    AppImages.lock,
+                    width: 40,
+                  ),
                 ),
+                keyboardType: TextInputType.visiblePassword,
                 hint: "${frLanguage['password']}",
                 controller: controller.pwdController.value,
               ),

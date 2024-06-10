@@ -1,12 +1,14 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../app/utils/color.dart';
 import '../app/utils/constants/size_constants.dart';
 import '../app/utils/request_utils.dart';
 import '../app/utils/text_theme.dart';
 import '../app/intl/texts.dart';
+import '../app/utils/utils.dart';
 
 class CustomCategory extends StatelessWidget {
   final String text;
@@ -239,7 +241,28 @@ buildBottomNavItem(String icon) {
       color: AppColor.yellowPrimary,
       borderRadius: BorderRadius.all(Radius.circular(AppSizes.bottomNavRadius)),
     ),
-    child: Image(image: AssetImage(icon))
+    child: SvgPicture.asset(
+      icon,
+    ),
+  );
+}
+
+circleBackAppBar() {
+  return AppBar(
+    leading: InkWell(
+      onTap: () {
+        navPrevious();
+      },
+      child: Container(
+        margin: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(36),
+          color: AppColor.yellowPrimary,
+        ),
+      ),
+    ),
+    backgroundColor: AppColor.transparentColor,
+    elevation: 0,
   );
 }
 

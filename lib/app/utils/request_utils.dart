@@ -25,6 +25,14 @@ class AckResponse<TModel> {
   AckResponse({this.data, this.message, this.statusCode, this.success});
 }
 
+class AckResponseTest<TModel> {
+  dynamic data;
+  String? message;
+  String? statusCode;
+  bool? success;
+  AckResponseTest({this.data, this.message, this.statusCode, this.success});
+}
+
 Uri kProdUri({required String endPoint}) =>
     Uri.parse("${NetworkConstants.baseURL}/$endPoint");
 

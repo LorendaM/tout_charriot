@@ -21,11 +21,10 @@ class UserInfoServiceImpl extends AbstractService
       if (!checkIfSuccess(statusCode: meResponse.statusCode)) {
         return buildAckErrorResponse<UserModel?>(meResponse);
       }
-      final userData = jsonDecode(meResponse.body);
-      return buildAckSuccessResponse<UserModel>(UserModel.fromJson(userData));
-      /*final userData = UserModel.fromJson(jsonDecode(meResponse.body));
+      Map<String, dynamic> responseData = jsonDecode(meResponse.body);
 
-      return buildAckSuccessResponse<UserModel>(userData);*/
+      final userData = jsonDecode(meResponse.body);
+      return buildAckSuccessResponse<UserModel>(userData);
     } catch (e) {
       throw AppException(reasonMessage: e.toString());
     }
