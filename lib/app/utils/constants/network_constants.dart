@@ -1,6 +1,6 @@
 class NetworkConstants {
   // base url
-  static const String baseURL = "http://192.168.1.98:3002/api"; //api link
+  static const String baseURL = "http://192.168.1.91:3002/api"; //api link
 
   // endpoints
   static const String login = "auth/login";

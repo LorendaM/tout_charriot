@@ -3,11 +3,9 @@ import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:tout_charriot/app/utils/text_theme.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../data/services/service_impl/storage_service_impl.dart';
-import 'color.dart';
 
 class AppUtils {
   static Size kSize(context) => MediaQuery.of(context).size;

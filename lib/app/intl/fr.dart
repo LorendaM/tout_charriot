@@ -1,6 +1,7 @@
 final Map<String,String> frLangData = {
   'hw': 'Hello,',
 
+  'devise': 'Fr cfa',
   'connectToApp': 'Connectez vous à \nTout Chariot',
   'numTel': 'Numéro de téléphone',
   'password': 'Mot de passe',
@@ -8,17 +9,20 @@ final Map<String,String> frLangData = {
   'recoverAccount': 'Récupérer le compte',
   'alreadyRegistered': 'Vous êtes déjà inscrit ?',
   'registerYou': 'Inscrivez vous',
+  'login': 'Se connecter',
 
   'registeredToApp': "S'inscrire sur Tout Chariot",
   'last_name': 'Nom',
   'first_name': 'Prénom',
+  'email': 'E-mail',
   'confirmPwd': 'Confirmer le mot de passe',
-  'acceptTerme': 'En vous inscrivant vous accepter ?',
-  'termeOfUse': "condition d'utilisation",
+  'acceptTerm': 'En vous inscrivant vous accepter ?',
+  'termOfUse': "condition d'utilisation",
   'andOur': "et nos",
   'privacyPolicy': 'politique de confidentialité',
   'notHaveAccount': "Vous n'avez pas de compte ?",
   'loginYou': 'Connectez vous',
+  'register': "S'inscrire",
 
   'race': 'Courses',
   'home': 'Accueil',
@@ -26,7 +30,7 @@ final Map<String,String> frLangData = {
 
   'app': 'Tout Chariot',
   'welcome': 'Bienvenue',
-  'yourWallet': 'Votre portefueille',
+  'yourWallet': 'Votre portefeuille',
   'topUp': 'Recharger',
   'searchCart': 'Recherche de chariot',
   'someMachine': 'Quelques engins',

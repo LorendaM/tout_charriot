@@ -4,7 +4,6 @@ import 'package:tout_charriot/app/utils/color.dart';
 import 'package:tout_charriot/app/utils/request_utils.dart';
 import 'package:tout_charriot/widgets/custom_input.dart';
 import '../../../../../widgets/custom_widget.dart';
-import '../../../../intl/texts.dart';
 import '../../../../utils/constants/image_constants.dart';
 import '../../../../utils/constants/size_constants.dart';
 import '../../../../utils/text_theme.dart';
@@ -20,7 +19,7 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("${frLanguage['app']}", style: AppTextStyle.secondTitle(),),
+        title: Text('app'.tr, style: AppTextStyle.secondTitle(),),
         leading: Container(
           padding: const EdgeInsets.only(left: AppSizes.doublespacePadding),
           child: const Image(
@@ -51,7 +50,6 @@ class HomeView extends GetView<HomeController> {
                       color: Colors.black,
                     )),
               )
-              //const Image(image: AssetImage(AppImages.notify)),
             ),
           )
         ],
@@ -64,7 +62,7 @@ class HomeView extends GetView<HomeController> {
             const SizedBox(height: AppSizes.spacePadding),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: AppSizes.spacePadding),
-              child: Text("${frLanguage['welcome']}\n${controller.username}",
+              child: Text("${'welcome'.tr}\n${controller.username}",
                 style: AppTextStyle.title(),
               ),
             ),
@@ -83,7 +81,7 @@ class HomeView extends GetView<HomeController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("${frLanguage['yourWallet']}", style: AppTextStyle.secondtext(),),
+                      Text('yourWallet'.tr, style: AppTextStyle.secondtext(),),
                       Text("12.000 CFA", style: AppTextStyle.title(),)
                     ],
                   ),
@@ -103,7 +101,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                         onTap: () {}, // nav to top up
                       ),
-                      Text("${frLanguage['topUp']}", style: AppTextStyle.textSmall(size: 11),)
+                      Text('topUp'.tr, style: AppTextStyle.textSmall(size: 11),)
                     ],
                   )
                 ],
@@ -112,11 +110,10 @@ class HomeView extends GetView<HomeController> {
             const SizedBox(height: AppSizes.spacePadding,),
             GestureDetector(
               onTap: () {
-                //kPushNamed(context: context, path: '/search');
                 Get.toNamed('/search');
               },
               child: CustomInput(
-                hint: "${frLanguage['searchCart']}",
+                hint: 'searchCart'.tr,
                 enable: false,
                 prefixIcon: const Icon(
                   Icons.search,
@@ -125,7 +122,7 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
             const SizedBox(height: AppSizes.spacePadding,),
-            Text("${frLanguage['someMachine']}", style: AppTextStyle.textSmall(size: 12),),
+            Text('someMachine'.tr, style: AppTextStyle.textSmall(size: 12),),
             const SizedBox(height: AppSizes.spacePadding,),
             SingleChildScrollView(
               padding: const EdgeInsets.symmetric(vertical: AppSizes.spacePadding),
@@ -138,7 +135,7 @@ class HomeView extends GetView<HomeController> {
                             '/location',
                             arguments:{
                               'imageEngins': AppImages.grue,
-                              'typeEngins': "${frLanguage['grue']}",
+                              'typeEngins': 'grue'.tr,
                               'mtnStart': 25000,
                               'mtnEnd': 32000
                             } );
@@ -155,7 +152,7 @@ class HomeView extends GetView<HomeController> {
                             '/location',
                             arguments:{
                               'imageEngins': AppImages.grue,
-                              'typeEngins': "${frLanguage['grue']}",
+                              'typeEngins': 'grue'.tr,
                               'mtnStart': 25000,
                               'mtnEnd': 32000
                             } );
@@ -172,7 +169,7 @@ class HomeView extends GetView<HomeController> {
                             '/location',
                             arguments:{
                               'imageEngins': AppImages.grue,
-                              'typeEngins': "${frLanguage['grue']}",
+                              'typeEngins': 'grue'.tr,
                               'mtnStart': 25000,
                               'mtnEnd': 32000
                             } );
@@ -186,7 +183,7 @@ class HomeView extends GetView<HomeController> {
                             '/location',
                             arguments:{
                               'imageEngins': AppImages.grue,
-                              'typeEngins': "${frLanguage['grue']}",
+                              'typeEngins': 'grue'.tr,
                               'mtnStart': 25000,
                               'mtnEnd': 32000
                             } );
@@ -197,7 +194,7 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
             const SizedBox(height: AppSizes.spacePadding,),
-            Text("${frLanguage['recentRaces']}", style: AppTextStyle.textSmall(size: 12),),
+            Text('recentRaces'.tr, style: AppTextStyle.textSmall(size: 12),),
             const SizedBox(height: AppSizes.spacePadding,),
             const CustomCard(
               dateRace: "Lundi 3 Mai 2024",

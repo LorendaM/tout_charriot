@@ -6,7 +6,6 @@ import 'package:tout_charriot/app/modules/dashboard/race/view/race_view.dart';
 import 'package:tout_charriot/app/utils/color.dart';
 
 import '../../../../widgets/custom_widget.dart';
-import '../../../intl/texts.dart';
 import '../../../utils/constants/image_constants.dart';
 
 
@@ -38,15 +37,15 @@ class DashboardView extends GetView<DashboardController> {
         onTap: controller.onItemTapped,
         items: [
           BottomNavigationBarItem(
-            label: "${frLanguage['race']}",
+            label: 'race'.tr,
             icon: buildBottomNavItem(AppImages.road),
           ),
           BottomNavigationBarItem(
-            label: "${frLanguage['home']}",
+            label: 'home'.tr,
             icon: buildBottomNavItem(AppImages.home),
           ),
           BottomNavigationBarItem(
-            label: "${frLanguage['myAccount']}",
+            label: 'myAccount'.tr,
             icon: buildBottomNavItem(AppImages.user),
           ),
         ],

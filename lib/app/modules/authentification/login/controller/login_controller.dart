@@ -37,7 +37,7 @@ class LoginController extends GetxController {
         );
     } catch (e) {
       // ignore: use_build_context_synchronously
-      showToast(context, e.toString());
+      showToast(context, e);
     }
     }
 }

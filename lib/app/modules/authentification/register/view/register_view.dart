@@ -2,7 +2,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:tout_charriot/app/intl/texts.dart';
 import 'package:tout_charriot/app/modules/authentification/register/controller/register_controller.dart';
 import 'package:tout_charriot/app/utils/color.dart';
 import 'package:tout_charriot/app/utils/constants/image_constants.dart';
@@ -42,7 +41,7 @@ class RegisterView extends GetView<RegisterController> {
                   ),
               ),
               const SizedBox(height: AppSizes.largePadding),
-              Text("${frLanguage['registeredToApp']}",
+              Text('registeredToApp'.tr,
                 style: AppTextStyle.title(),
               ),
               const SizedBox(height: AppSizes.secondDefPadding),
@@ -55,7 +54,7 @@ class RegisterView extends GetView<RegisterController> {
                   ),
                 ),
                 keyboardType: TextInputType.text,
-                hint: "${frLanguage['name']}",
+                hint: 'last_name'.tr,
                 controller: controller.lastNameController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding),
@@ -68,7 +67,7 @@ class RegisterView extends GetView<RegisterController> {
                   ),
                 ),
                 keyboardType: TextInputType.text,
-                hint: "${frLanguage['prenom']}",
+                hint: 'first_name'.tr,
                 controller: controller.firstNameController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding),
@@ -81,7 +80,7 @@ class RegisterView extends GetView<RegisterController> {
                   ),
                 ),
                 keyboardType: TextInputType.number,
-                hint: "${frLanguage['numTel']}",
+                hint: 'numTel'.tr,
                 controller: controller.phoneController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding),
@@ -91,7 +90,7 @@ class RegisterView extends GetView<RegisterController> {
                   size: 50,
                 ),
                 keyboardType: TextInputType.emailAddress,
-                hint: "Email",
+                hint: 'email'.tr,
                 controller: controller.emailController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding),
@@ -107,7 +106,7 @@ class RegisterView extends GetView<RegisterController> {
                 isPassWord: true,
                 secure: controller.isPasswordVisible.value,
                 toggle: (){},
-                hint: "${frLanguage['password']}",
+                hint: 'password'.tr,
                 controller: controller.pwdController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding,),
@@ -125,7 +124,7 @@ class RegisterView extends GetView<RegisterController> {
                 toggle: () {
                   controller.togglePasswordVisibility();
                 },
-                  hint: "${frLanguage['confirmPwd']}",
+                  hint: 'confirmPwd'.tr,
                   controller: controller.confirmPwdController.value,
                 ),
               const SizedBox(height: AppSizes.thirdPadding),
@@ -133,19 +132,19 @@ class RegisterView extends GetView<RegisterController> {
                 child: RichText(
                     text: TextSpan(
                         children: [
-                          TextSpan(text: "${frLanguage['acceptTerme']}", style: AppTextStyle.textSmall()),
+                          TextSpan(text: 'acceptTerm'.tr, style: AppTextStyle.textSmall()),
                           const TextSpan(text: " "),
                           TextSpan(
-                              text: "${frLanguage['termeOfUse']}",
+                              text: 'termOfUse'.tr,
                               style: AppTextStyle.textSmall(color: AppColor.yellowPrimary, isunderline: true),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () { launchTheUrl(NetworkConstants.appTerme);}
                           ),
                           const TextSpan(text: " "),
-                          TextSpan(text: "${frLanguage['andOur']}", style: AppTextStyle.textSmall()),
+                          TextSpan(text: 'andOur'.tr, style: AppTextStyle.textSmall()),
                           const TextSpan(text: " "),
                           TextSpan(
-                              text: "${frLanguage['privacyPolicy']}",
+                              text: 'privacyPolicy'.tr,
                               style: AppTextStyle.textSmall(color: AppColor.yellowPrimary, isunderline: true),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () { launchTheUrl(NetworkConstants.appPolicy);}
@@ -159,18 +158,18 @@ class RegisterView extends GetView<RegisterController> {
                 press: () {
                   controller.userRegister(context);
                 },
-                text: "${frLanguage['register']}",
+                text: 'register'.tr,
                 style: AppTextStyle.textBold(),
               ),
-              CustomTextButton(
-                text: "${frLanguage['notHaveAccount']}",
-                press: () {},
-                style: AppTextStyle.text(color: AppColor.blackColor),
+              Center(
+                child: Text(
+                  'notHaveAccount'.tr,
+                  style: AppTextStyle.text(color: AppColor.blackColor),
+                ),
               ),
               CustomTextButton(
-                text: "${frLanguage['loginYou']}",
+                text: 'loginYou'.tr,
                 press: () {
-                  //kPushNamed(context: context, path: '/login');
                   Get.toNamed('/login');
                 },
                 style: AppTextStyle.text(color: AppColor.yellowPrimary),

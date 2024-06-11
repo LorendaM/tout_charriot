@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:tout_charriot/app/intl/texts.dart';
 import 'package:tout_charriot/app/modules/authentification/login/controller/login_controller.dart';
 import 'package:tout_charriot/app/utils/color.dart';
 import 'package:tout_charriot/app/utils/constants/size_constants.dart';
@@ -26,7 +25,7 @@ class LoginView extends GetView<LoginController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: AppSizes.largePadding,),
-              Text("${frLanguage['connectToApp']}",
+              Text('connectToApp'.tr,
                 style: AppTextStyle.title(),
               ),
               const SizedBox(height: AppSizes.secondDefPadding,),
@@ -39,7 +38,7 @@ class LoginView extends GetView<LoginController> {
                   ),
                 ),
                 keyboardType: TextInputType.number,
-                hint: "${frLanguage['numTel']}",
+                hint: 'numTel'.tr,
                 controller: controller.phoneController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding,),
@@ -52,16 +51,16 @@ class LoginView extends GetView<LoginController> {
                   ),
                 ),
                 keyboardType: TextInputType.visiblePassword,
-                hint: "${frLanguage['password']}",
+                hint: 'password'.tr,
                 controller: controller.pwdController.value,
               ),
               CustomMultiTextButton(
                 text: Text.rich(
                     TextSpan(
                         children: [
-                          TextSpan(text: "${frLanguage['forgetPwd']}", style: AppTextStyle.textSmall()),
+                          TextSpan(text: 'forgetPwd'.tr, style: AppTextStyle.textSmall()),
                           const TextSpan(text: " "),
-                          TextSpan(text: "${frLanguage['recoverAccount']}", style: AppTextStyle.textSmall(color: AppColor.yellowPrimary))
+                          TextSpan(text: 'recoverAccount'.tr, style: AppTextStyle.textSmall(color: AppColor.yellowPrimary))
                         ]
                     )
                 ),
@@ -72,19 +71,19 @@ class LoginView extends GetView<LoginController> {
                 press: () {
                   controller.userLogin(context);
                 },
-                text: "${frLanguage['login']}",
+                text: 'login'.tr,
                 style: AppTextStyle.textBold(),
               ),
               Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: AppSizes.spacePadding,),
-                  child: Text("${frLanguage['alreadyRegistered']}",
+                  child: Text('alreadyRegistered'.tr,
                     style: AppTextStyle.text(color: AppColor.blackColor),
                   ),
                 ),
               ),
               CustomTextButton(
-                text: "${frLanguage['registerYou']}",
+                text: 'registerYou'.tr,
                 press: () {
                   Get.toNamed( '/register');
                 },
