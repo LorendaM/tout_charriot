@@ -26,35 +26,6 @@ class RegisterController extends GetxController {
     isPasswordVisible.value = !isPasswordVisible.value;
   }
 
-  /*void userRegister(BuildContext context)async{
-
-    Map<String,dynamic>register={
-      'username':'${lastNameController.value.text}'+' '+'${firstNameController.value.text}',
-      'phone':phoneController.value.text,
-      'password':confirmPwdController.value.text,
-      'email': emailController.value.text,
-      'provider':'ewp',
-    };
-    try {
-    AckResponse<UserModel?> registerResponse = await _authentificationService.registerUser(jsonEncode(register));
-    if (registerResponse.success == false) {
-      Map<String, dynamic> message = jsonDecode(registerResponse.message!);
-      // ignore: use_build_context_synchronously
-      showToast(context, message['message']);
-    } else {
-      Map<String, dynamic> message = jsonDecode(registerResponse.message!);
-      // ignore: use_build_context_synchronously
-      showToast(context, message['message']);
-      Get.toNamed(
-        Routes.login,
-      );
-    }
-    }catch(e){
-      // ignore: use_build_context_synchronously
-      showToast(context, e.toString());
-    }
-  }*/
-
   Future<void> userRegister(BuildContext context) async {
     final Map<String, dynamic> register = {
       'username': '${lastNameController.value.text} ${firstNameController.value.text}',
@@ -68,11 +39,12 @@ class RegisterController extends GetxController {
       String message = await _authenticationService.registerUser(jsonEncode(register));
       // ignore: use_build_context_synchronously
       showToast(context, message);
-
+      navPrevious();
       Get.offNamed(Routes.login);
     } catch (e) {
       // ignore: use_build_context_synchronously
       showToast(context, e.toString());
+      navPrevious();
     }
   }
 

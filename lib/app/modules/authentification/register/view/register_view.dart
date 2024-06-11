@@ -156,6 +156,7 @@ class RegisterView extends GetView<RegisterController> {
               const SizedBox(height: AppSizes.semiLargePadding),
               CustomButton(
                 press: () {
+                  showLoading(context);
                   controller.userRegister(context);
                 },
                 text: 'register'.tr,

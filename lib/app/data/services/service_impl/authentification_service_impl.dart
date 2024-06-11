@@ -18,12 +18,25 @@ class AuthentificationServiceImpl extends AbstractService
           headers: header(),
           body: json);
       if (!checkIfSuccess(statusCode: response.statusCode)) {
-        throw AppException(reasonMessage: response.body);
+        final msg = jsonDecode(response.body);
+        String message =msg['message'];
+        throw AppException(reasonMessage: message);
       }
       Map<String, dynamic> credentials = jsonDecode(response.body);
       String jwt = credentials['token']['token'];
+      String message =credentials['message'];
       StorageServicesImpl().setToken(jwt);
-      return 'Utilisateur connecté';
+      final meResponse = await http.get(kProdUri(endPoint: NetworkConstants.meResponse),
+          headers: authHeaders(token: jwt));
+      if (!checkIfSuccess(statusCode: meResponse.statusCode)) {
+        final msg = jsonDecode(response.body);
+        String message =msg['message'];
+        throw AppException(reasonMessage: message);
+      }
+      Map<String, dynamic> responseData = jsonDecode(meResponse.body);
+      final jSons = jsonEncode(responseData['data']);
+      StorageServicesImpl().setUserData(jSons);
+      return message;
     } catch (e) {
       throw AppException(reasonMessage: e.toString());
     }
@@ -38,12 +51,11 @@ class AuthentificationServiceImpl extends AbstractService
         body: json,
       );
       if (!checkIfSuccess(statusCode: response.statusCode)) {
-        throw AppException(reasonMessage: response.body);
+        final msg = jsonDecode(response.body);
+        String message =msg['message'];
+        throw AppException(reasonMessage: message);
       }
       Map<String, dynamic> responseData = jsonDecode(response.body);
-      final jSons = jsonEncode(responseData['data']);
-
-      StorageServicesImpl().setUserData(jSons);
       return responseData['message'];
     } catch (e) {
       throw AppException(reasonMessage: e.toString());

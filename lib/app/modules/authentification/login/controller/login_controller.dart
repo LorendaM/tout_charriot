@@ -27,17 +27,20 @@ class LoginController extends GetxController {
       'password': pwdController.value.text
     };
     try {
-      String message = await _authentificationService.loginUser(jsonEncode(login));
+      String message =
+          await _authentificationService.loginUser(jsonEncode(login));
       bool isLogin = true;
       StorageServicesImpl().setBoolData(isLogin);
       // ignore: use_build_context_synchronously
       showToast(context, message);
-        Get.toNamed(
-          Routes.dashboard,
-        );
+      navPrevious();
+      Get.toNamed(
+        Routes.dashboard,
+      );
     } catch (e) {
       // ignore: use_build_context_synchronously
-      showToast(context, e);
+      showToast(context, e.toString());
+      navPrevious();
     }
-    }
+  }
 }

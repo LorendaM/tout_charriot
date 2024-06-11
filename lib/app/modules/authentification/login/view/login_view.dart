@@ -5,6 +5,7 @@ import 'package:tout_charriot/app/modules/authentification/login/controller/logi
 import 'package:tout_charriot/app/utils/color.dart';
 import 'package:tout_charriot/app/utils/constants/size_constants.dart';
 import 'package:tout_charriot/app/utils/text_theme.dart';
+import 'package:tout_charriot/app/utils/utils.dart';
 import 'package:tout_charriot/widgets/custom_button.dart';
 import 'package:tout_charriot/widgets/custom_input.dart';
 
@@ -69,6 +70,7 @@ class LoginView extends GetView<LoginController> {
               const SizedBox(height: AppSizes.semiLargePadding,),
               CustomButton(
                 press: () {
+                  showLoading(context);
                   controller.userLogin(context);
                 },
                 text: 'login'.tr,

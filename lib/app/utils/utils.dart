@@ -62,7 +62,7 @@ showLoading(context, [String msg = 'Veuillez patienter ...']) {
 navPrevious() {
   Get.back();
 }
-void showToast(BuildContext context, msg, {int seconds = 5}) {
+void showToast(BuildContext context,String msg, {int seconds = 5}) {
   TextStyle textStyle = const TextStyle(fontSize: 13.0, color: Colors.white);
   showToastWidget(Builder(builder: (BuildContext context) {
     FocusScope.of(context).requestFocus(FocusNode());
@@ -71,12 +71,10 @@ void showToast(BuildContext context, msg, {int seconds = 5}) {
             borderRadius: BorderRadius.circular(25.0),
             color: const Color(0x99000000)),
         padding: const EdgeInsets.symmetric(horizontal: 17.0, vertical: 10.0),
-        child: msg is String
-            ? Text(
+        child: Text(
                 msg,
           style: textStyle,
-        )
-            : msg);
+        ));
   }),
       context: context,
       animation: StyledToastAnimation.slideFromBottom,
