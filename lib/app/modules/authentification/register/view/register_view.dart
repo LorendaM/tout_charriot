@@ -94,23 +94,7 @@ class RegisterView extends GetView<RegisterController> {
                 controller: controller.emailController.value,
               ),
               const SizedBox(height: AppSizes.spacePadding),
-              CustomInput(
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: SvgPicture.asset(
-                    AppImages.lock,
-                    width: 40,
-                  ),
-                ),
-                keyboardType: TextInputType.visiblePassword,
-                isPassWord: true,
-                secure: controller.isPasswordVisible.value,
-                toggle: (){},
-                hint: 'password'.tr,
-                controller: controller.pwdController.value,
-              ),
-              const SizedBox(height: AppSizes.spacePadding,),
-              CustomInput(
+              Obx(()=> CustomInput(
                   prefixIcon: Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: SvgPicture.asset(
@@ -118,15 +102,35 @@ class RegisterView extends GetView<RegisterController> {
                       width: 40,
                     ),
                   ),
-                keyboardType: TextInputType.visiblePassword,
-                isPassWord: true,
-                secure: controller.isPasswordVisible.value,
-                toggle: () {
-                  controller.togglePasswordVisibility();
-                },
-                  hint: 'confirmPwd'.tr,
-                  controller: controller.confirmPwdController.value,
+                  keyboardType: TextInputType.visiblePassword,
+                  isPassWord: true,
+                  secure: controller.isPasswordVisible.value,
+                  toggle: (){
+                    controller.togglePasswordVisibility();
+                  },
+                  hint: 'password'.tr,
+                  controller: controller.pwdController.value,
                 ),
+              ),
+              const SizedBox(height: AppSizes.spacePadding,),
+              Obx(()=> CustomInput(
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: SvgPicture.asset(
+                        AppImages.lock,
+                        width: 40,
+                      ),
+                    ),
+                  keyboardType: TextInputType.visiblePassword,
+                  isPassWord: true,
+                  secure: controller.isPasswordConfVisible.value,
+                  toggle: () {
+                    controller.togglePasswordConfVisibility();
+                  },
+                    hint: 'confirmPwd'.tr,
+                    controller: controller.confirmPwdController.value,
+                  ),
+              ),
               const SizedBox(height: AppSizes.thirdPadding),
               CustomMultiTextButton(
                 child: RichText(

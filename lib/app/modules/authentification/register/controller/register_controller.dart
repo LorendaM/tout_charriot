@@ -14,7 +14,8 @@ class RegisterController extends GetxController {
   var firstNameController = TextEditingController().obs;
   var emailController = TextEditingController().obs;
   late AuthentificationService _authenticationService;
-  var isPasswordVisible = false.obs;
+  RxBool isPasswordVisible = false.obs;
+  RxBool isPasswordConfVisible = false.obs;
 
   @override
   void onInit() {
@@ -24,6 +25,10 @@ class RegisterController extends GetxController {
   }
   void togglePasswordVisibility() {
     isPasswordVisible.value = !isPasswordVisible.value;
+  }
+
+  void togglePasswordConfVisibility() {
+    isPasswordConfVisible.value = !isPasswordConfVisible.value;
   }
 
   Future<void> userRegister(BuildContext context) async {

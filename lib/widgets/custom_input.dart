@@ -45,7 +45,7 @@ class CustomInput extends StatelessWidget {
           textCapitalization: TextCapitalization.words,
           enabled: enable,
           controller: controller,
-          obscureText: secure ?? false,
+          obscureText: secure!,
           keyboardType: keyboardType,
           cursorColor: AppColor.blackColor,
           textAlignVertical: TextAlignVertical.top,
@@ -55,17 +55,15 @@ class CustomInput extends StatelessWidget {
             hintText: hint,
             border: InputBorder.none,
             hintStyle: AppTextStyle.text(color: AppColor.blackColor),
-            suffixIcon: isPassWord ?? false
-                ? IconButton(
-              icon: Icon(
-                  secure!
-                      ? Icons.visibility_outlined
-                      : Icons.visibility_off_outlined,
-                color: Colors.black,),
-              onPressed: () {
-                toggle;
-              },
-            )
+            suffixIcon: isPassWord!
+                ? GestureDetector(
+              onTap: toggle,
+                  child: Icon(
+                    secure!
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                  color: Colors.black,),
+                )
                 : const SizedBox(),
           ),
         ),
